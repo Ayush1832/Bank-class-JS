@@ -29,3 +29,35 @@ class BankAccount {
         this.transactionHistory.push({ type: 'Withdraw', amount, date: new Date() });
         this.updateAccountDetails();
     }
+
+    transfer(amount, targetAccount) {
+        if (!(targetAccount instanceof BankAccount)) {
+            alert('Target account must be a valid BankAccount.');
+            return;
+        }
+        if (amount <= 0) {
+            alert('Transfer amount must be positive.');
+            return;
+        }
+        if (amount > this.balance) {
+            alert('Insufficient funds.');
+            return;
+        }
+        this.withdraw(amount);
+        targetAccount.deposit(amount);
+        this.transactionHistory.push({ type: 'Transfer Out', amount, to: targetAccount.accountNumber, date: new Date() });
+        targetAccount.transactionHistory.push({ type: 'Transfer In', amount, from: this.accountNumber, date: new Date() });
+        this.updateAccountDetails();
+        targetAccount.updateAccountDetails();
+    }
+
+    addInterest(rate) {
+        if (rate <= 0) {
+            alert('Interest rate must be positive.');
+            return;
+        }
+        const interest = this.balance * (rate / 100);
+        this.balance += interest;
+        this.transactionHistory.push({ type: 'Interest', amount: interest, date: new Date() });
+        this.updateAccountDetails();
+    }
