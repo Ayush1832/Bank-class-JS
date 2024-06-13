@@ -100,3 +100,24 @@ function withdraw() {
     const amount = parseFloat(document.getElementById('withdrawAmount').value);
     currentAccount.withdraw(amount);
 }
+function transfer() {
+    if (!currentAccount) {
+        alert('No account selected.');
+        return;
+    }
+    const targetAccountNumber = document.getElementById('targetAccount').value;
+    const amount = parseFloat(document.getElementById('transferAmount').value);
+    
+    if (!targetAccountNumber || isNaN(amount)) {
+        alert('Please provide valid transfer details.');
+        return;
+    }
+    
+    const targetAccount = accounts[targetAccountNumber];
+    if (!targetAccount) {
+        alert('Target account does not exist.');
+        return;
+    }
+    
+    currentAccount.transfer(amount, targetAccount);
+}
