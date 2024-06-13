@@ -61,6 +61,7 @@ class BankAccount {
         this.transactionHistory.push({ type: 'Interest', amount: interest, date: new Date() });
         this.updateAccountDetails();
     }
+
     getAccountDetails() {
         return {
             accountNumber: this.accountNumber,
@@ -100,6 +101,7 @@ function withdraw() {
     const amount = parseFloat(document.getElementById('withdrawAmount').value);
     currentAccount.withdraw(amount);
 }
+
 function transfer() {
     if (!currentAccount) {
         alert('No account selected.');
@@ -121,3 +123,13 @@ function transfer() {
     
     currentAccount.transfer(amount, targetAccount);
 }
+
+function addInterest() {
+    if (!currentAccount) {
+        alert('No account selected.');
+        return;
+    }
+    const rate = parseFloat(document.getElementById('interestRate').value);
+    currentAccount.addInterest(rate);
+};
+
