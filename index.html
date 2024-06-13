@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account Simulator</title>
+    <link rel="stylesheet" href="bank.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bank Account Simulator</h1>
+        
+        <div class="form-section">
+            <h2>Deposit</h2>
+            <input type="number" id="depositAmount" placeholder="Amount">
+            <button onclick="deposit()">Deposit</button>
+        </div>
+        
+        <div class="form-section">
+            <h2>Withdraw</h2>
+            <input type="number" id="withdrawAmount" placeholder="Amount">
+            <button onclick="withdraw()">Withdraw</button>
+        </div>
+        
+        <div class="form-section">
+            <h2>Transfer</h2>
+            <input type="text" id="targetAccount" placeholder="Target Account Number">
+            <input type="number" id="transferAmount" placeholder="Amount">
+            <button onclick="transfer()">Transfer</button>
+        </div>
+        
+        <div class="form-section">
+            <h2>Add Interest</h2>
+            <input type="number" id="interestRate" placeholder="Interest Rate (%)">
+            <button onclick="addInterest()">Add Interest</button>
+        </div>
+
+        <div class="account-details">
+            <h2>Account Details</h2>
+            <pre id="accountDetails"></pre>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
