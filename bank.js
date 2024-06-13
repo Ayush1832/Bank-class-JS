@@ -74,3 +74,29 @@ class BankAccount {
         document.getElementById('accountDetails').textContent = JSON.stringify(this.getAccountDetails(), null, 2);
     }
 }
+
+const accounts = {
+    '12345': new BankAccount('12345', 'Ayush', 1000),
+    '67890': new BankAccount('67890', 'Nayak', 500)
+};
+
+let currentAccount = accounts['12345'];
+currentAccount.updateAccountDetails();
+
+function deposit() {
+    if (!currentAccount) {
+        alert('No account selected.');
+        return;
+    }
+    const amount = parseFloat(document.getElementById('depositAmount').value);
+    currentAccount.deposit(amount);
+}
+
+function withdraw() {
+    if (!currentAccount) {
+        alert('No account selected.');
+        return;
+    }
+    const amount = parseFloat(document.getElementById('withdrawAmount').value);
+    currentAccount.withdraw(amount);
+}
