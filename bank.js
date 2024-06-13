@@ -61,3 +61,16 @@ class BankAccount {
         this.transactionHistory.push({ type: 'Interest', amount: interest, date: new Date() });
         this.updateAccountDetails();
     }
+    getAccountDetails() {
+        return {
+            accountNumber: this.accountNumber,
+            accountHolder: this.accountHolder,
+            balance: this.balance,
+            transactionHistory: this.transactionHistory
+        };
+    }
+
+    updateAccountDetails() {
+        document.getElementById('accountDetails').textContent = JSON.stringify(this.getAccountDetails(), null, 2);
+    }
+}
